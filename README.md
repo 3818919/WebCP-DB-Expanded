@@ -10,5 +10,20 @@
  It is recommended if replacing your original WebCP that you make a backup of it and install this project into a clean directory rather than overwriting the existing one. 
  
  Credits: Julian Smythe (original author), Richard Leek (Bug fix: map name), Arnoud van der Horst (Endless Online author- data read assistance and granted icon public use permissions).
- 
- 
+
+## Additional Features
+config.php & common.php has been modified to add the following additional features.
+```
++ bcrypt encryption support
++ Client download file detection
++ Discord invite link
++ Donate link
+```
+## Page Modifications
+Additional pages & existing file modifications have been made to add the following additional features.
+```
++ Top Wealth Page
++ Server News on Home Page
++ Screenshots slider on Home Page
++ Citizenship Page simplification
+```
