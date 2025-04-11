@@ -48,8 +48,8 @@ $onlinecache = 60; // How many seconds to keep the online list/status cached, re
 
 
 // Server Data file locations - [No need to change]
-$pubfiles = $$datafiles . '/pub';
-$mapfiles = $$datafiles . '/maps';
+$pubfiles = $datafiles . '/pub';
+$mapfiles = $datafiles . '/maps';
 $questfiles = $datafiles . '/quests';
 $newsfile = $datafiles . '/news.txt';
 $questext = '.eqf';
