@@ -25,10 +25,6 @@
  + Screenshots slider on Home Page
  + Citizenship Page simplification
  ```
-## WebCP-Full Database (Template)
- EOSERV-WebCP panel with Expanded Database Menu - Template<br>
- All Filepaths setup for `/tpl/eo/`
-
 ### Credits
  - Endless Online author- data read assistance and granted icon public use permissions [Arnoud van der Horst](https://endless-online.com)
  - WebCP originally published by Sausage(Julian Smythe) [Eoserv WebCP](https://github.com/eoserv/webcp)
