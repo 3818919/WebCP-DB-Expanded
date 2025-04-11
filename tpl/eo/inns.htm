@@ -1,0 +1,28 @@
+<main class="main-content">
+	<section class="content-box">
+		<[foreach inns inn]>
+            <[if inn.quizzes]>
+            <header class="content-header" style="margin-top:30px;">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Quests">
+                <span class="title"><[inn.name]> Citizenship Quiz</span>
+            </header>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <[foreach inn.quizzes quiz]>
+                    <tr>
+                        <td style="width: 70%;"><[quiz.question]></td>
+                        <td style="width: 30%;"><[quiz.answer]></td>
+                    </tr>
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <[endif]>
+        <[endforeach]>
+	</section>
+</main>

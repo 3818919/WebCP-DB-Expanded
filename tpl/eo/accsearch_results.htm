@@ -1,0 +1,32 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Search Results">
+			<span class="title">Showing <[showing]> of <[count]> accounts</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Characters</th>
+					<th>Computer Name</th>
+					<th>HDID</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach accounts acc]>
+                <tr>
+                    <td><a href="./gmaccount<[php]>?name=<[~acc.username]>"><[~acc.username]></a></td>
+                    <td><[acc.characters]></td>
+                    <td><[~acc.computer]></td>
+                    <td><[acc.hdid_str]></td>
+                <[endforeach]>
+			</tbody>
+		</table>
+	</section>
+    <div style="flex-direction: row; justify-content: center; width: 90%">
+		<span style="text-align: center; padding-right: 5%;"><[#pagination]></span>
+	</div>
+</main>
+

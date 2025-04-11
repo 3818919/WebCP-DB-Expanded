@@ -1,0 +1,60 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="<[inn.name]>">
+			<span class="title"><[inn.name]> | Map <[inn.spawnmap]> (<[inn.lowname]>)</span>
+		</header>
+        <article class="content-body spacer">
+			<b>Respawn Location:</b> <a href="map<[php]>?map=<[inn.spawnmap]>">Map <[inn.spawnmap]> <[inn.lowname]></a><br>
+            
+            <[if inn.hi_level]>
+                <b>Level <[inn.hi_level]> Respawn Location: </b><a href="map<[php]>?map=<[inn.hi_spawnmap]>">#<[inn.hi_spawnmap]> <[inn.hiname]></a><br>
+            <[endif]>
+
+            <[if inn.sleepmap]>
+                <[if inn.cost]><b>Cost: <[inn.cost]>g<br><[endif]>
+                <[if !inn.cost]><b>Cost: 1g per HP+TP recovered<br><[endif]>
+            <[endif]>
+           
+		</article>
+
+        <[if @inns]>
+        <header class="content-header" style="margin-top:30px;">
+			<img src="./tpl/eo/images/icons/news_post.webp" alt="Innkeepers">
+			<span class="title">Innkeepers</span>
+		</header>
+        <table id="innkeepers" style="text-align:center">
+            <tbody>                
+                <[foreach inns inn]>
+                    <[if !inn.row]><tr><[endif]><td><a href="npc<[php]>?npc=<[inn.npcid]>"><[if inn.image]><img src="<[inn.image]>"><br><[endif]>#<[inn.npcid]> <[inn.name]></a>	
+                <[endforeach]>
+        </table>
+        <[endif]>
+
+        <[if @quizzes]>
+        <header class="content-header" style="margin-top:30px;">
+			<img src="./tpl/eo/images/icons/news_post.webp" alt="Quests">
+			<span class="title">Citizenship Quiz</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+                    <th>Question</th>
+					<th>Answer</th>
+				</tr>
+			</thead>
+			<tbody>
+                <[foreach quizzes quiz]>
+                <tr>
+                    <td><[quiz.question]></td>
+                    <td><[quiz.answer]></td>
+                </tr>
+			    <[endforeach]>
+			</tbody>
+		</table>
+        <[endif]>
+        
+	</section>
+</main>
+

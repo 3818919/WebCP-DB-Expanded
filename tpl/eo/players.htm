@@ -1,0 +1,33 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Top Players">
+			<span class="title">Top <[limit]> Strongest Players</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Title</th>
+					<th>Gender</th>
+					<th>Level</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach characters char]>
+                <tr>
+                    <td><[if GM]><a href="./character<[php]>?name=<[%char.name]>"><[endif]><[char.name]><[if GM]></a><[endif]></td>
+
+                    <td><[char.title]></td>
+
+                    <td><[char.gender]></td>
+
+                    <td><[char.level]></td>
+
+                <[endforeach]>
+			</tbody>
+		</table>
+	</section>
+</main>
+

@@ -1,0 +1,71 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+        <header class="content-header">
+            <img src="./tpl/eo/images/icons/moon.webp" alt="spell Lookup">
+            <span class="title"><[trainer.name]></span>
+        </header> 
+        <article>
+            <b>Name:</b> <span> <[trainer.name]></span><br>
+            <[if trainer.minlevel]>
+                <b>Required Level:</b> <span><[trainer.minlevel]></span><br>
+            <[endif]>
+
+            <[if trainer.clasreq]>
+                <b>Required Class:</b> <span><[trainer.clasreqname]></span><br>
+            <[endif]>
+        </article>
+
+        <div class="spacer"></div>
+        <header class="content-header">
+            <img src="./tpl/eo/images/icons/news_post.webp" alt="NPCs">
+            <span class="title">NPCs</span>
+        </header> 
+        <table class="spacer" style="border:0;">
+            <tbody>
+                <[foreach trainers trainer]>
+                    <tr style="border:0; background-color: transparent;">
+                        <td style="border:0;"><a href="npc<[php]>?npc=<[trainer.npcid]>"><[trainer.name]> (<[trainer.npcid]>)</a></td>
+                    </tr>
+                <[endforeach]>
+            </tbody>
+        </table>
+
+        
+        <[if @skills]>
+        <div class="spacer"></div>
+        <header class="content-header">
+            <img src="./tpl/eo/images/icons/news_post.webp" alt="Skills Taught">
+            <span class="title">Skills Taught</span>
+        </header> 
+        <table class="spacer">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Requirements</th>
+            <tbody>
+                <[foreach skills skill]>
+                    <tr>
+                        <td><a><[if skill.image]><img src= "<[skill.image]>"><br><[endif]></a></td>
+                        <td><a href="spell<[php]>?spell=<[skill.skillid]>"><[skill.name]> (<[skill.skillid]>)</a></td>
+                        <td><[if skill.levelreq]><b>Level: <[skill.levelreq]><br><[endif]>
+                            <[if skill.clasreq]><b>Class: <a href="class<[php]>?class=<[skill.clasid]>"><[skill.clasreq]></a><br><[endif]>
+                            <[if skill.sk1id]><b>Skill 1: <a href="spell<[php]>?spell=<[skill.sk1id]>"><[skill.sk1name]></a><br><[endif]>
+                            <[if skill.sk2id]><b>Skill 2: <a href="spell<[php]>?spell=<[skill.sk2id]>"><[skill.sk2name]></a><br><[endif]>
+                            <[if skill.sk3id]><b>Skill 3: <a href="spell<[php]>?spell=<[skill.sk3id]>"><[skill.sk3name]></a><br><[endif]>
+                            <[if skill.sk4id]><b>Skill 4: <a href="spell<[php]>?spell=<[skill.sk4id]>"><[skill.sk4name]></a><br><[endif]>
+                            <[if skill.strreq]><b>Strength: <[skill.strreq]><br><[endif]>
+                            <[if skill.intlreq]><b>Intelligence: <[skill.intlreq]><br><[endif]>
+                            <[if skill.wisreq]><b>Wisdom: <[skill.wisreq]><br><[endif]>
+                            <[if skill.agireq]><b>Agility: <[skill.agireq]><br><[endif]>
+                            <[if skill.conreq]><b>Constitution: <[skill.conreq]><br><[endif]>
+                            <[if skill.chareq]><b>Charisma: <[skill.chareq]><br><[endif]>
+                        </td>
+                <[endforeach]>
+            </tbody>
+        </table>
+        <[endif]>                
+	</section>
+</main>
+

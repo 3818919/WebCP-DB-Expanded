@@ -1,0 +1,220 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+        <[if error]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/moon.webp" alt="<[npc.name]>">
+                <span class="title"><[npc.name]> (<[npc.id]>)</span>
+            </header> 
+            <article style="color: red;">
+                <center><b>Data currently unavailable</b></center>
+            </article>
+        <[endif]>
+
+        <[if !error]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/moon.webp" alt="<[npc.name]>">
+                <span class="title"><[npc.name]> (<[npc.id]>)</span>
+            </header> 
+            <div class="character-container">
+                <div class="character-column left-column">
+                    <b>Name:</b> <span><[npc.name]></span><br>
+                    <b>Type:</b> <span>
+                        <[if !quest.id]>
+                            <[if !inn]>
+                                <[if npc.boss]><font color="red"> BOSS</font><[endif]>
+                                <[if npc.child]><font color="b57edc"> BOSS Child</font><[endif]>
+                                <[if npc.normal]><font color="gray"> Standard</font><[endif]>
+                            <[endif]>
+                        <[endif]>
+                        <[if quest.id]>
+                            <font color="gray"><a href="quest.php?quest=<[quest.id]>">Quest (<[quest.name]>)</a></font>
+                        <[endif]>
+                        <[if inn]>
+                            <font color="gray">Innkeeper</a></font>
+                        <[endif]>
+                    </span><br>
+                        <[if npc.passive]><b>Nature:</b> <span></span><font color="green"> Passive</font></span><br><[endif]>
+                        <[if npc.aggressive]><b>Nature:</b> <span></span><font color="red"> Aggressive</font></span><br><[endif]>
+                    
+                    <[if !@maps]>
+                        No Map Spawn Data<br>
+                    <[endif]>
+                    <[if npc.desc]><b>Sometimes Says:</b> <span><[npc.desc]></span><br><[endif]>
+                    <[if npc.monster]>
+                        <b>Level:</b> <span><[npc.level]></span><br>
+                        <b>EXP:</b> <span><[npc.exp]></span><br>
+                        <b>HP:</b> <span><[npc.hp]></span><br>
+                        <b>TP:</b> <span><[npc.tp]></span><br>
+                        <b>Damage:</b> <span><[npc.mindam]> - <[npc.maxdam]></span><br>
+                        <b>Accuracy:</b> <span><[npc.accuracy]></span><br>
+                        <b>Armor:</b> <span><[npc.armor]></span><br>
+                        <b>Evade:</b> <span><[npc.evade]></span><br>
+                        <b>Return Damage:</b> <span><[npc.rdam]></span><br>
+                    <[endif]>
+                </div>
+                <div class="character-column right-column">
+                    <[if npc.image]><img src="<[npc.image]>"><br><[endif]>
+                    <[if npc.monster]>
+                        <b>Attack Element:</b> <span><[npc.element_attack]></span><br>
+                        <b>Attack Element Power:</b> <span><[npc.element_attack_power]></span><br>
+                        <b>Resists Element:</b> <span><[npc.element_weak]></span><br>
+                        <b>Resists Element Power:</b> <span><[npc.element_weak_power]></span><br>
+                    <[endif]>
+                </div>
+            </div>
+            <div class="spacer"></div>
+
+            <[if @drops]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Item Drops">
+                <span class="title">Item Drops</span>
+            </header>
+            <table class="spacer">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Amount</th>
+                        <th>Rarity</th>
+                <tbody>
+                    <[foreach drops drop]>
+                        <tr>
+                            <td><a href="item.php?item=<[drop.itemid]>"><[if drop.image]><img src="<[drop.image]>"><br><[endif]><[drop.item]> (<[drop.itemid]>)</a></td>
+                            <td><b><[drop.amount]></b></td>
+                            <td><b><[drop.pct]></b></td>
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <div class="spacer"></div>
+            <[endif]> 
+
+            <[if @shops]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Item Drops">
+                <span class="title"><[if shopname]><a href="shop.php?shop=<[shopid]>"><[shopname]></a><[endif]><[if !shopname]>Shop<[endif]></span>
+            </header>
+            <table class="spacer">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                <tbody>
+                    <[foreach shops shop]>
+                        <tr>
+                            <td><a href="item.php?item=<[shop.itemid]>"><[if shop.image]><img src="<[shop.image]>"><br><[endif]><[shop.item]> (<[shop.itemid]>)<a></td>
+                            <td><[if shop.sell]><b>Buy: </b><a><[shop.sell]>g</a><br><[endif]><[if shop.buy]><b>Sell:</b> <a><[shop.buy]>g</a><[endif]></td>
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <div class="spacer"></div>
+            <[endif]> 
+            
+            <[if @crafts]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Item Drops">
+                <span class="title"><[if shopname]><a href="shop.php?shop=<[shopid]>"><[shopname]> Crafts</a><[endif]><[if !shopname]>Shop Crafts<[endif]></span>
+            </header>
+            <table class="spacer">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Ingredients</th>
+                <tbody>
+                    <[foreach crafts craft]>
+                        <tr>
+                            <td><a href="item.php?item=<[craft.itemid]>"><[if craft.image]><img src="<[craft.image]>"><br><[endif]><[craft.item]> (<[craft.itemid]>)</a></td>
+                            <td><[foreach craft.ingredients ing]><a href="item.php?item=<[ing.itemid]>"><[ing.item]></a>: <[ing.amount]><br><[endforeach]></td>
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <div class="spacer"></div>
+            <[endif]> 
+
+            <[if @skills]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Item Drops">
+                <span class="title"><[if skillname]><a href="trainer.php?trainer=<[npc.shopid]>"><[skillname]></a><[endif]><[if !skillname]>Skills<[endif]></span>
+            </header>
+            <table class="spacer">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Cost</th>
+                        <th>Requirements</th>
+                <tbody>
+                    <[foreach skills skill]>
+                        <tr>
+                            <td><a href="spell.php?spell=<[skill.spellid]>"><[if skill.image]><img src="<[skill.image]>"><br><[endif]><[skill.spell]> (<[skill.spellid]>)</a></td>
+                            <td><b><[skill.cost]></b></td>
+                            <td>
+                                <[if skill.levelreq]><b>Level: <[skill.levelreq]></b><br><[endif]>
+                                <[if skill.clasreq]><b>Class: <a href="class.php?class=<[skill.clasreq]>"><[skill.clasname]></a></b><br><[endif]>
+                                <[if skill.sk1]><b>Skill 1: <a href="spell.php?spell=<[skill.sk1]>"><[skill.sk1name]></a></b><br><[endif]>
+                                <[if skill.sk2]><b>Skill 2: <a href="spell.php?spell=<[skill.sk2]>"><[skill.sk2name]></a></b><br><[endif]>
+                                <[if skill.sk3]><b>Skill 3: <a href="spell.php?spell=<[skill.sk3]>"><[skill.sk3name]></a></b><br><[endif]>
+                                <[if skill.sk4]><b>Skill 4: <a href="spell.php?spell=<[skill.sk4]>"><[skill.sk4name]></a></b><br><[endif]>
+                                <[if skill.strreq]><b>STR: <[skill.strreq]></b><br><[endif]>
+                                <[if skill.intreq]><b>INT: <[skill.intreq]></b><br><[endif]>
+                                <[if skill.wisreq]><b>WIS: <[skill.wisreq]></b><br><[endif]>
+                                <[if skill.agireq]><b>AGI: <[skill.agireq]></b><br><[endif]>
+                                <[if skill.conreq]><b>CON: <[skill.conreq]></b><br><[endif]>
+                                <[if skill.chareq]><b>CHA: <[skill.chareq]></b><br><[endif]>
+                                <[foreach skill.spellreq spellreq]>
+                                    <b>Spell:</b> <a href="spell.php?spell=<[spellreq.spellid]>"><[spellreq.spell]></a><br>
+                                <[endforeach]>
+                            </td>
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <div class="spacer"></div>
+            <[endif]> 
+
+            <[if quest.id]>
+            <[if quest.itemid]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Item Drops">
+                <span class="title"><[if quest.name]>Quest Rewards: <a href="quest.php?quest=<[quest.id]>"><[quest.name]></a><[endif]><[if !quest.name]>Quest Rewards<[endif]></span>
+            </header>
+                <table class="spacer">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Reward</th>
+                    <tbody>
+                        <[foreach rewards quest]>
+                            <tr>
+                                <td><[if quest.isitem]><a href="item.php?item=<[quest.itemid]>"><[if quest.image]><img src="<[quest.image]>"><br><[endif]><[quest.item]> (<[quest.itemid]>)</a><[endif]><[if !quest.isitem]><img src="./images/notice.png"><a><[quest.item]></a><[endif]></td>
+                                <td><[quest.amount]></b></td>
+                            </tr>
+                            
+                        <[endforeach]>
+                    </tbody>
+                </table>
+            <[endif]>
+            <div class="spacer"></div>
+            <[endif]>        
+
+
+            <[if @maps]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Locations">
+                <span class="title">Locations</span>
+            </header>
+            <table style="border:0;">
+                <tbody>
+                    <[foreach maps map]>
+                        <[if map.name]>
+                            <tr style="background-color: transparent;">
+                                <td style="border: 0;"><a href="map.php?map=<[map.mapid]>"><[map.name]> (<[map.mapid]>)</a></td>
+                            </tr>
+                        <[endif]>     
+                    <[endforeach]>
+                </tbody>
+            </table>
+           <[endif]>
+
+        <[endif]>
+	</section>
+
+</main>
+

@@ -1,0 +1,66 @@
+<!-- Main Content Section -->
+<main class="main-content">
+    <[if foundclas]>
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="<[class.name]>">
+			<span class="title"><[class.name]>  | Class ID: #<[class.id]></span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+                    <th>STR</th>
+					<th>INT</th>
+                    <th>WIS</th>
+                    <th>AGI</th>
+                    <th>CON</th>
+                    <th>CHA</th>
+				</tr>
+			</thead>
+			<tbody>
+                <tr>
+				    <td><[class.str]></td>
+                    <td><[class.intl]></td>
+                    <td><[class.wis]></td>
+                    <td><[class.agi]></td>
+                    <td><[class.con]></td>
+                    <td><[class.cha]></td>
+                </tr>
+			</tbody>
+		</table>
+
+        <[if @quests]>
+        <header class="content-header" style="margin-top:30px;">
+			<img src="./tpl/eo/images/icons/news_post.webp" alt="Quests">
+			<span class="title">Found in Quests</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+                    <th>NPC</th>
+					<th>Quest</th>
+				</tr>
+			</thead>
+			<tbody>
+                <[foreach quests quest]>
+                <tr>
+				    <td><a href="npc.php?npc=<[quest.npcid]>"><[if quest.image]><img src="<[quest.image]>"><br><[endif]>#<[quest.npcid]> <[quest.npcname]></a></td>
+                    <td><a href="quest.php?quest=<[quest.questid]>"><[quest.questname]></a></td>
+                </tr>
+                <[endforeach]>
+			</tbody>
+		</table>
+        <[endif]>
+        
+	</section>
+    <[endif]>
+
+    <[if !foundclas]>
+    <section class="content-box">
+        <article class="content-body spacer">
+			<center>Class not found..</center>
+		</article>
+    </section>
+    <[endif]>
+</main>
+

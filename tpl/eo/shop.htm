@@ -1,0 +1,59 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="<[shop.name]>">
+			<span class="title"><[shop.name]></span>
+		</header>
+        <article>
+            <[if shop.minlevel]><b>Required Level: <span><[shop.minlevel]></span><br><[endif]>
+            <[if shop.clasreq]><b>Required Class: <span><[shop.clasreqname]></span><br><[endif]>
+        </article>
+
+        <[if shop.numtrades]>
+        <table class="spacer">
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach trades trade]>
+                <tr>
+                    <td><a href="item<[php]>?item=<[trade.itemid]>"><[if trade.image]><img src= "<[trade.image]>"><br><[endif]><[trade.item]> (<[trade.itemid]>)</a></td>
+                    <td><[if trade.sell]>Buy: <a><[trade.sell]>g</a><[endif]><[if trade.buy]><br>Sell: <a><[trade.buy]>g</a><[endif]></td>
+                </tr>
+                <[endforeach]>
+			</tbody>
+		</table>
+        <[endif]>
+
+        <div class="spacer"><br></div>
+        <[if shop.numcrafts]>
+        <header class="content-header">
+			<img src="./tpl/eo/images/icons/news_post.webp" alt="Crafts">
+			<span class="title">Shop Crafts</span>
+		</header>
+        <table>
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Ingredients</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach crafts craft]>
+                <tr>
+                    <td><a href="item.php?item=<[craft.itemid]>"><[if craft.image]><img src="<[craft.image]>"><br><[endif]>#<[craft.itemid]> <[craft.item]></a></td>
+                    <td><[foreach craft.ingredients ing]><a href="item.php?item=<[ing.itemid]>"><[ing.item]></a><b>: <[ing.amount]></b><br>
+                        <[endforeach]>
+                </tr>
+                <[endforeach]>
+			</tbody>
+		</table>
+        <[endif]>
+		
+	</section>
+</main>
+

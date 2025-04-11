@@ -1,0 +1,337 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/moon.webp" alt="Item Lookup">
+                <span class="title"><[map.name]> (<[map.id]>)</span>
+            </header> 
+           <article>
+                <b>Name: </b><span> <[map.name]> (<[map.id]>)</span><br>
+                <b>Size: </b><span><[map.width]>x<[map.height]></span><br>
+                <b>Combat Mode: </b><span><[if map.pk]><font color="red">Player Kill</font><[endif]><[if !map.pk]><font color="gray">Standard</font><[endif]></span><br>
+                
+                <b>Hazard: </b><span>
+                <[if !map.hazard]><font color="gray">None</font><[endif]>
+                <[if map.poison]><font color="#9735df">Poison (HP Drain)</font><[endif]>
+                <[if map.vortex]><font color="#3545df">Vortex (TP Drain)</font><[endif]>
+                <[if map.quake1]><font color="#fda048">Earthquake (Light)</font><[endif]>
+                <[if map.quake2]><font color="#f37828">Earthquake (Small)</font><[endif]>
+                <[if map.quake3]><font color="#d94017">Earthquake (Medium)</font><[endif]>
+                <[if map.quake4]><font color="#d91717">Earthquake (Heavy)</font><[endif]>
+                </span><br>
+
+                <b>Scroll Teleport: </b><span>
+                <[if map.scroll]><font color="green">Enabled</font><[endif]>
+                <[if !map.scroll]><font color="red">Disabled</font><[endif]>
+                </span><br>
+
+                <b>Mini-Map: </b><span>
+                <[if map.minimap]><font color="green">Enabled</font><[endif]>
+                <[if !map.minimap]><font color="red">Disabled</font><[endif]>
+                </span><br>
+
+                <[if map.respawn]>
+                <b>Respawn Relocation: </b><span>
+                x: <a><[map.rx]></a> y: <a><[map.ry]></a>
+                </span><br>
+                <[endif]>
+            </article>
+
+
+            <[if @warps]>
+                <[if !error]>
+                <div class="spacer"></div>
+                <header class="content-header">
+                    <img src="./tpl/eo/images/icons/news_post.webp" alt="Teleports">
+                    <span class="title">Map Teleport Locations</span>
+                </header> 
+                <table class="spacer">
+                    <thead>
+                        <tr>
+                            <th>Destination</th>
+                            <th>Level Required</th>
+                            <th>Key Required</th>
+                    <tbody>
+                    <[foreach warps warp]>
+                        <tr>
+                            <td><a href="map<[php]>?map=<[warp.warpmap]>"><[warp.warpname]> (<[warp.warpmap]>)</a></td>
+                            <td><[warp.level]></td>
+                            <td><[if warp.keylocked]><a href="item<[php]>?item=<[warp.keyid]>"><img src="<[warp.keyimage]>"><br><[warp.keyname]> (<[warp.keyid]>)</a><[endif]><[if !warp.keylocked]>-<[endif]></td>
+                        </tr>   
+                    <[endforeach]>
+                    </tbody>
+                </table>
+                <[endif]> 
+            <[endif]> 
+
+            
+            <[if @items]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Chests">
+                <span class="title">Map Chest Items</span>
+            </header> 
+            <table class="spacer">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Amount</th>
+                        <th>Spawn Time (hours:minutes)</th>
+                        <th>Key</th>
+                <tbody>
+                <[foreach items item]>
+                <tr>
+                    <td><a href="item<[php]>?item=<[item.itemid]>"><[if item.image]><img src="<[item.image]>"><br><[endif]><[item.name]> (<[item.itemid]>)</a></td>
+                    <td><[item.amount]></td>
+                    <td><[item.spawntime]></td>
+                    <td><[if item.keyid]><a href="item<[php]>?item=<[item.keyid]>"><[endif]><[if item.keyimage]><img src="<[item.keyimage]>"><[item.br]><[endif]><[item.keyid]> <[item.keyname]><[if item.keyid]></a><[endif]>
+                </tr>
+                <[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @bosses]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Boss NPCs">
+                <span class="title">Boss NPCs</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach bosses npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)<[if npc.boss]><img src="./images/star.png"><[endif]></a></td>
+                            </tr>            
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @mobs]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Mob NPCs">
+                <span class="title">Mob NPCs</span>
+            </header> 
+            <table class="spacer" >
+                <tbody>
+                    <[foreach mobs npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr>            
+                    <[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @pets]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Pets">
+                <span class="title">Pet NPCs</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach pets npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @mines]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Mine NPCs">
+                <span class="title">Mine NPCs</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach mines npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @shops]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Shop Keepers">
+                <span class="title">Shop Keepers</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach shops npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @inns]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Inn Keepers">
+                <span class="title">Inn Keepers</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach inns npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @lockers]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Locker Keepers">
+                <span class="title">Locker Keepers</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach lockers npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @bankers]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Bankers">
+                <span class="title">Bankers</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach bankers npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @barbers]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Barbers">
+                <span class="title">Barbers</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach barbers npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @guilds]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Guild Masters">
+                <span class="title">Guild Masters</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach guilds npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @lawyers]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Lawyers">
+                <span class="title">Lawyers</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach lawyers npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @trainers]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Skill Masters">
+                <span class="title">Skill Masters</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach trainers npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @quests]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Quest NPCs">
+                <span class="title">Quest NPCs</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach quests npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+
+            <[if @friendlies]>
+            <div class="spacer"></div>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Friendly NPCs">
+                <span class="title">Friendly NPCs</span>
+            </header> 
+            <table class="spacer">
+                <tbody>
+                    <[foreach friendlies npc]>
+                            <tr style="background-color: transparent;">
+                                <td style="border:0;"><a href="npc<[php]>?npc=<[npc.npcid]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.npcid]>)</a></td>
+                            </tr><[endforeach]>
+                </tbody>
+            </table>
+            <[endif]> 
+
+	</section>
+
+</main>
+

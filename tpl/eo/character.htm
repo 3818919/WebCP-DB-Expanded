@@ -1,0 +1,118 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/moon.webp" alt="Account Lookup">
+                <span class="title">Character Lookup</span>
+            </header> 
+            <div class="character-container">
+                <div class="character-column left-column">
+                    <b>Name:</b> <span><[character.name]></span><br>
+                    <[if character.admin]><b>Role:</b> <span><[character.admin_str]></span><br><[endif]>
+                    <b>Title:</b> <span><[character.title]></span><br>
+                    <b>Gender:</b> <span><[character.gender]></span><br>
+                    <b>Class:</b> <span><[character.class]></span><br>
+                    <b>Level:</b> <span><[character.level]></span><br>
+                    <b>Exp:</b> <span><[character.exp]></span><br><br>
+                    <b>Race:</b> <span><[character.race_str]></span><br>
+                    <b>Hair Style:</b> <span><[character.hairstyle]></span><br>
+                    <b>Hair Color:</b> <span><[character.haircolor_str]></span><br>
+                    <b>Home:</b> <span><[character.home]></span><br>
+                    <[if character.partner]>
+                        <b>Partner Name:</b> 
+                        <span>
+                            <[if GM]>
+                            <a href="./character<[php]>?name=<[%character.partner]>"><[endif]>
+                            <[character.partner]>
+                            <[if GM]></a><[endif]>
+                        </span><br>
+                    <[endif]>
+                </div>
+                <div class="character-column right-column">
+                    <b>STR:</b> <span><[character.str]></span><br>
+                    <b>INT:</b> <span><[character.int]></span><br>
+                    <b>WIS:</b> <span><[character.wis]></span><br>
+                    <b>AGI:</b> <span><[character.agi]></span><br>
+                    <b>CON:</b> <span><[character.con]></span><br>
+                    <b>CHA:</b> <span><[character.cha]></span><br><br>
+                    <b>Stat Points:</b> <span><[character.statpoints]></span><br>
+                    <b>Skill Points:</b> <span><[character.skillpoints]></span><br>
+                    <b>Karma:</b> <span><[character.karma_str]></span><br>
+                    <b>Current Location:</b> 
+                    <span>
+                        <a href="./map<[php]>?map=<[character.nmap]>">
+                            #<[character.map]> <[character.mapname]>
+                        </a>
+                    </span><br>
+                    <b>Usage:</b> <span><[character.usage_str]></span><br>
+                </div>
+            </div>
+
+
+            <[if character.guild]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Account Lookup">
+                <span class="title">Character Guild</span>
+            </header> 
+            <article class="content-body spacer">
+                <b>Guild Name:</b><span><[character.guild_name]></span><br>
+                <b>Guild Tag:</b> <span><[character.guild]></span><br>
+                <b>Rank in Guild:</b> <span><[character.guild_rank_str]> (<[character.guild_rank]>)</span><br>
+            </article> 
+            <[endif]> 
+
+
+            <[if character.spells]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Account Lookup">
+                <span class="title">Character Skills</span>
+            </header>
+            <table class="spacer">
+                <thead>
+                    <tr><th>Skill<th>Skill Level
+                <tbody>
+            <[foreach character.spells spell]>
+                    <[if spell.id]><tr><td><a href="./spell<[php]>?spell=<[~spell.id]>"><[spell.name]> (<[spell.id]>)</a><td><[spell.level]><[endif]>
+
+            <[endforeach]>
+            </table>
+            <[endif]>
+
+
+            <[if character.inventory]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Account Lookup">
+                <span class="title">Character Inventory</span>
+            </header>
+            <table class="spacer">
+                <thead>
+                    <tr><th>Item<th>Amount
+                <tbody>
+            <[foreach character.inventory item]>
+                    <[if item.id]><tr><td><a href="./item<[php]>?item=<[~item.id]>"><[item.name]> (<[item.id]>)</a><td><[item.amount]><[endif]>
+
+            <[endforeach]>
+            </table>
+            <[endif]>
+
+            <[if character.bank]>
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/news_post.webp" alt="Account Lookup">
+                <span class="title">Character Bank</span>
+            </header>
+            <table>
+                <thead>
+                    <tr><th>Item<th>Amount
+                <tbody>
+                    <tr><td><a href="./item<[php]>?item=1">Gold (1)</a></td><td><[character.goldbank]></td></tr>
+            <[foreach character.bank item]>
+                <[if item.id]><tr><td><a href="./item<[php]>?item=<[~item.id]>"><[item.name]> (<[item.id]>)</a><td><[item.amount]><[endif]>
+
+            <[endforeach]>
+            </table>
+            <[endif]>
+            
+	</section>
+
+</main>
+

@@ -1,0 +1,42 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="<[guild.tag]>">
+			<span class="title"><[guild.tag]> | <[guild.name]></span>
+		</header>
+        <article>
+            <b>Created:</b> <span><[guild.created_str]></span><br>
+            <b>Name:</b> <span><[guild.name]></span><br>
+            <b>Description:</b> <span><[guild.description]></span><br>
+            <b>Bank:</b> <span><[guild.bank]></span><br>
+            <a href="./guildmembers<[php]>?tag=<[%guild.tag]>"><b>Members:</b> <span><[guild.members]></a></span><br>
+            <b>Strength (exp):</b> <span><[guild.exp]></span><br>
+            <b>Guild Ranks:<br></b>
+            <[foreach guild.ranks rank]>
+		        <[if rank.1]><[rank.1]><br><[endif]>
+            <[endforeach]>
+
+        </article>
+
+        <header class="content-header">
+			<img src="./tpl/eo/images/icons/news_post.webp" alt="Members">
+			<span class="title">Guild Administration</span>
+		</header>
+        <div class="character-container">
+            <div class="character-column left-column">
+                <h4>Guild Leaders</h4>
+                <[foreach leaders leader id]>
+                <[if GM]><a href="./character<[php]>?name=<[%leader.name]>"><[endif]><[leader.name]><[if GM]></a><[endif]><[if leader.gm]> <img src="./tpl/green/images/admin.gif"><[endif]><[if !leader.guild_rank]> (founder)<br><[endif]>
+                <[endforeach]>
+            </div>
+            <div class="character-column right-column">
+                <h4>Guild Recruiters</h4>
+                <[foreach recruiters recruiter id]>
+                <[if recruiter.gm]> <img src="./tpl/eo/images/icons/admin_user.webp" title="Admin" style="max-width: 16px;"><[endif]> <[if GM]><a href="./character<[php]>?name=<[%recruiter.name]>"><[endif]><[recruiter.name]><br><[if GM]></a><[endif]>
+                <[endforeach]>
+            </div>
+        </div>
+	</section>
+</main>
+

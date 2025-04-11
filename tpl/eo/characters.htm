@@ -1,0 +1,34 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Characters">
+			<span class="title">Characters</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Title</th>
+					<th>Gender</th>
+					<th>Level</th>
+                    <th>Exp</th>
+                    <th>Rank</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach characters char]>
+                <tr>
+                    <td><[if char.gm]><img src="./tpl/eo/images/icons/admin_user.webp" style="max-width:18px"><[endif]> <a href="./character<[php]>?name=<[%char.name]>"><[char.name]></a><[if char.gm]><[endif]>
+                    <td><[char.title]>
+                    <td><[char.gender]>
+                    <td><[char.level]>
+                    <td><[char.exp]>
+                    <td><[char.admin_str]>
+
+                <[endforeach]>
+			</tbody>
+		</table>
+	</section>
+</main>
+

@@ -1,0 +1,32 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="NPCs">
+			<span class="title">Showing <[showing]> of <[count]> <[section]></span>
+		</header>
+
+		<table>
+            <thead>
+                <tr>
+                    <th>Spell</th>
+                    <th>Data</th>
+			<tbody>
+				<[foreach spells spell]>
+                    <[if spell.name]>
+						<tr>
+							<td><a href="spell<[php]>?spell=<[spell.id]>"><[if spell.image]><img src="<[spell.image]>"><br><[endif]><[spell.name]> (<[spell.id]>)</a></td>
+                            <td><[spell.data]></td> 
+						</tr> 
+                    <[endif]>             
+                <[endforeach]>
+			</tbody>
+		</table>
+
+
+        <div style="flex-direction: row; justify-content: center; width: 90%">
+            <span style="text-align: center; padding-right: 5%;"><[pagination]></span>
+        </div>
+	</section>
+</main>
+

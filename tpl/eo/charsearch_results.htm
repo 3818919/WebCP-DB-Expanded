@@ -1,0 +1,35 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Characters">
+			<span class="title">Showing <[showing]> of <[count]> characters</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Account</th>
+					<th>Level</th>
+                    <th>Exp</th>
+                    <th>Role</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach characters char]>
+                <tr>
+                    <td><a href="./character<[php]>?name=<[%char.name]>"><[char.name]></a><[if char.gm]><img src="./tpl/eo/images/icons/admin_user.webp" style="max-width: 16px;"><[endif]>
+                    <td><a href="./gmaccount<[php]>?name=<[%char.account]>"><[char.account]></a>
+                    <td><[char.level]>
+                    <td><[char.exp]>
+                    <td><[char.admin_str]>
+
+                <[endforeach]>
+			</tbody>
+		</table>
+		<div style="flex-direction: row; justify-content: center; width: 90%">
+            <span style="text-align: center; padding-right: 5%;"><[#pagination]></span>
+        </div>
+	</section>
+</main>
+

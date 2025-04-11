@@ -1,0 +1,28 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Shops">
+			<span class="title">Shops</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Shop</th>
+					<th>Shop Items</th>
+					<th>Craft Items</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach shops shop]>
+                <tr>
+                    <td><a href="shop.php?shop=<[shop.id]>"><[shop.name]> (<[shop.id]>)</a></td>
+                    <td><[shop.trades]></td>
+                    <td><[shop.crafts]></td>
+                </tr>
+                <[endforeach]>
+			</tbody>
+		</table>
+	</section>
+</main>
+

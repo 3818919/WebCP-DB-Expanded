@@ -1,0 +1,45 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="NPCs">
+			<span class="title">Showing <[showing]> of <[count]> <[section]></span>
+		</header>
+        <[if monsters]>
+		<table>
+            <thead>
+                <tr>
+                    <th>NPCs</th>
+                    <th>Data</th>
+			<tbody>
+				<[foreach npcs npc]>
+                    <[if npc.name]>
+						<tr>
+							<td><a href="npc<[php]>?npc=<[npc.id]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.id]>)</a></td>
+                            <td><[npc.data]></td> 
+						</tr> 
+                    <[endif]>             
+                <[endforeach]>
+			</tbody>
+		</table>
+        <[endif]>
+
+        <[if !monsters]>
+		<table style="border:0;">
+			<tbody>
+				<[foreach npcs npc]>
+                    <[if npc.name]>
+						<tr style="background-color: transparent;">
+							<td style="border:0;"><a href="npc<[php]>?npc=<[npc.id]>"><[if npc.image]><img src="<[npc.image]>"><br><[endif]><[npc.name]> (<[npc.id]>)</a></td> 
+						</tr>
+                    <[endif]>               
+                <[endforeach]>
+			</tbody>
+		</table>
+        <[endif]>
+        <div style="flex-direction: row; justify-content: center; width: 90%">
+            <span style="text-align: center; padding-right: 5%;"><[pagination]></span>
+        </div>
+	</section>
+</main>
+

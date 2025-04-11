@@ -3,93 +3,83 @@
 // Used for the session ID, must be unique if running more than one WebCP on a server
 $cpid = 'EODB';
 
+
 // Link and site name used in the header
 $homeurl = 'http://localhost/';
 $sitename = 'MySite';
 
-// Password salt, this must be the same as in EOSERV's config.ini
-$salt = 'ChangeMe';
 
-// Database connection info
-$dbtype = 'mysql';
-$dbhost = 'localhost';
-$dbuser = 'eoserv';
-$dbpass = 'eoserv';
-$dbname = 'eoserv';
+// Website Links
+$client_download = "./download"; // The download link will be the latest updated .zip file within this directory. If no files are within this directory, the default client is set to v3.x(k) download
+$donationlink = ''; // Replace with your paypal/patreon donation link, leaving empty will hide the donation button
+$discordinvite = ''; // Replace with your discord server invite link, leaving empty will hide the discord button
 
-//Data Files
-$datafiles = 'C:\data';
-
-//Images per database page
-$imgperpage = 30;
-
-// Template file to use, directory ./tpl/$template/ must exist
-$template = 'green';
-
-// Page file extension, keep this as .php unless you know you can change it
-$phpext = '.php';
 
 // Server details, the online list is grabbed from here
 $serverhost = '127.0.0.1';
 $serverport = 8078;
 
-// Purely cosmetic, number of players that can be online at once
-$maxplayers = 2000;
 
-// How many items to show per page (eg. All Character list)
-$perpage = 100;
+// Database connection info
+$dbtype = 'sqlite';
+$dbhost = 'localhost';
+$dbuser = 'eoserv';
+$dbpass = 'eoserv';
+$dbname = 'eoserv';
+$salt = 'ChangeMe';
 
-// How many players are shown on the top players page
-$topplayers = 100;
 
-// How many guilds are shown on the top guilds page 
-$topguilds = 100;
+//Data Files
+$datafiles = 'C:/data';
 
-// How many seconds to keep the online list/status cached, reducing this will increase the accuracy of the online list/status, but increase server load
-$onlinecache = 60;
 
-// Where the EIF and ECF files are found, no trailing slash
-$pubfiles = 'C:\data\pub';
+// Website Config
+$imgperpage = 30; //Images per database page
+$template = 'eo'; // Template file to use, directory ./tpl/$template/ must exist
+$phpext = '.php'; // Page file extension, keep this as .php unless you know you can change it
 
-// Caches EIF and ECF file data to a native PHP format, disabling this will use a lot more CPU power than neccessary
-$pubcache = true;
 
-// Where the map files are found, no trailing slash
-$mapfiles = 'C:/data/maps';
+// Table Limits
+$maxplayers = 2000; // Purely cosmetic, number of players that can be online at once
+$perpage = 100; // How many items to show per page (eg. All Character list)
+$topplayers = 100; // How many players are shown on the top players page
+$topguilds = 100; // How many guilds are shown on the top guilds page 
+$onlinecache = 60; // How many seconds to keep the online list/status cached, reducing this will increase the accuracy of the online list/status, but increase server load
 
-// Where the quest files are found, no trailing slash
-$questfiles = 'C:/data/quests';
 
-// Quest preferred file extension
+// Server Data file locations - [No need to change]
+$pubfiles = $$datafiles . '/pub';
+$mapfiles = $$datafiles . '/maps';
+$questfiles = $datafiles . '/quests';
+$newsfile = $datafiles . '/news.txt';
 $questext = '.eqf';
 
-// Turning this on will cause HTTP 400 errors if you refresh a form, but provides a little more security
-$dynamiccsrf = false;
 
-// Print debug info at the bottom of the page (never use this on live servers)
-$DEBUG = false;
+// Caching & Debugging
+$dynamiccsrf = false; // Turning this on will cause HTTP 400 errors if you refresh a form, but provides a little more security
+$DEBUG = false; // Print debug info at the bottom of the page (never use this on live servers)
+$pubcache = true;
 
-// Turning this on will cause HTTP 400 errors if you refresh a form, but provides a little more security 
-$dynamiccsrf = false; 
-  
+
 // Rate-limits authentication requests by IP address 
 // Driver can either be 'none', 'file' or 'db' 
 // DB driver requires an additional table added to the database (see install.sql) 
 //$loginrate_driver = 'none'; 
 //$loginrate_driver = 'file'; 
-$loginrate_driver = 'db'; 
-  
+$loginrate_driver = 'file'; 
+
+
 // File path for loginrate 'file' driver, requires a trailing slash 
 // For privacy reasons this path shouldn't be accessible via your webserver 
 $loginrate_file_path = './.htloginrate/'; 
-  
-// Filename salt for loginrate 'file' driver 
-// This should be changed to something random 
-$loginrate_file_salt = 'ChangeMe'; 
-  
-// Database table for loginrate 'db' driver 
-$loginrate_db_table = 'webcp_loginrate'; 
-  
+
+
+// Database & Login config
+$hash_method = 'bcrypt'; // DB server hash method [Etheos uses bcrypt rather than sha256]
+$loginrate_file_salt = $salt; // Database salt set above
+$loginrate_db_table = 'webcp_loginrate'; // Database table for loginrate 'db' driver 
+
+
 //   Require a CAPTCHA after: 
 //    - more than 5 requests in an hour 
 //    - or, more than 20 requests in a day 
@@ -106,11 +96,4 @@ $loginrate = '2:10; 10:300; 100:86400';
 $captcha_fonts = array( 
     '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 
     '/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', 
-); 
-  
-
-
-//if (is_file("./config.local.php"))
-//{
-	//include "./config.local.php";
-//}
+);

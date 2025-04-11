@@ -1,0 +1,49 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+        <table id="account">
+            <header class="content-header">
+                <img src="./tpl/eo/images/icons/moon.webp" alt="Account Lookup">
+                <span class="title">Account Lookup</span>
+            </header>
+            <article class="content-body">
+                <b>Username:</b> <span><[account.username]></span><br>
+                <b>Account Registered:</b> <span><[account.created_str]> (<a href="search<[php]>?searchtype=account&amp;ip=<[%account.regip]>"><[account.regip]></a>)</span><br>
+                <b>Last Logged In:</b> <span><[if account.lastused]><[account.lastused_str]> (<a href="search<[php]>?searchtype=account&amp;ip=<[%account.lastip]>"><[account.lastip]>)</a><[else]><i>Never</i><[endif]></span><br>
+                <b>Computer Name:</b> <span><a href="search<[php]>?searchtype=account&amp;computer=<[%account.computer]>"><[account.computer_str]></a></span><br>
+                <b>HDID:</b> <span><a href="search<[php]>?searchtype=account&amp;hdid=<[%account.hdid_str]>"><[account.hdid_str]></a></span><br>
+            </article>
+            <article class="content-body">
+                <b>Full Name:</b> <span><[account.fullname]></span><br>
+                <b>Location:</b> <span><[account.location]></span><br>
+                <b>Email:</b> <span><[account.email]></span>
+            </article>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Gender</th>
+                        <th>Level</th>
+                        <th>Exp</th>
+                        <th>Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <[foreach characters char]>
+                    <tr>
+                        <td><a href="./character<[php]>?name=<[%char.name]>"><[char.name]></a><[if char.gm]> <img src="./tpl/green/images/admin.gif"><[endif]></td>
+                        <td><[char.title]></td>
+                        <td><[char.gender]></td>
+                        <td><[char.level]></td>
+                        <td><[char.exp]></td>
+                        <td><[char.admin_str]></td>
+                    </tr>
+                    <[endforeach]>
+                </tbody>
+            </table>
+	</section>
+
+</main>
+

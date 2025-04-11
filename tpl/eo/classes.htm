@@ -1,0 +1,21 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Classes">
+			<span class="title">Classes</span>
+		</header>
+		<table style="border:0;">
+			<tbody>
+				<[foreach classes class]>
+					<[if class.quests]>
+						<tr style="background-color: transparent;">
+							<td style="border: 0;"><a href="class.php?class=<[class.id]>"><[class.name]></a></td>
+						</tr>
+					<[endif]>               
+                <[endforeach]>
+			</tbody>
+		</table>
+	</section>
+</main>
+

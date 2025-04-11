@@ -1,0 +1,2 @@
+Place your client downloads in this directory, webcp will automatically present the latest .zip file to the player.
+If no .zip files are placed in this directory the player will be given a 3.x(h) client download instead.

@@ -1,0 +1,32 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="NPCs">
+			<span class="title">Showing <[showing]> of <[count]> <[section]></span>
+		</header>
+
+		<table>
+            <thead>
+                <tr>
+                    <th>Trainer</th>
+                    <th>Skills Taught</th>
+			<tbody>
+				<[foreach trainers trainer]>
+                    <[if trainer.name]>
+						<tr>
+							<td><a href="trainer.php?trainer=<[trainer.id]>"><[trainer.name]> <[trainer.id]></a></td>
+                            <td><[trainer.skills]></td> 
+						</tr> 
+                    <[endif]>             
+                <[endforeach]>
+			</tbody>
+		</table>
+
+
+        <div style="flex-direction: row; justify-content: center; width: 90%">
+            <span style="text-align: center; padding-right: 5%;"><[pagination]></span>
+        </div>
+	</section>
+</main>
+

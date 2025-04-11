@@ -1,0 +1,39 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Quests">
+			<span class="title"><[quest.name]> | Quest ID: #<[quest.id]></span>
+		</header>
+        <article class="content-body">
+			<b>Type: <[if quest.questends]><span>Terminal</span><[endif]><[if !quest.questends]><span>Repeatable<[if quest.questdaily]><[if !oncedaily]> <[quest.questdaily]> Times<[endif]> Daily <[endif]></span><[endif]></b><br>
+            <br><b>Associated NPCs:</b> <[foreach vendors vendor]><a href="npc<[php]>?npc=<[vendor.npcid]>"><[if vendor.image]> <img src="<[vendor.image]>"> <[endif]><br>#<[vendor.npcid]> <[vendor.name]><[if vendor.main]><img src="./images/star.png"><[endif]></a><[endforeach]>
+		</article>
+        <div class="spacer"></div>
+
+        <[if showreward]>
+        <h3>Possible Rewards</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <[foreach itemrewards reward]>
+                <tr>
+                    <td><a href="item.php?item=<[reward.itemid]>"><[if reward.image]><img src="<[reward.image]>"><br><[endif]><[reward.name]> (<[reward.itemid]>)</a>
+                    <td><b><[reward.amount]></b>	
+                    <[endforeach]>
+                    <[foreach rewards reward]>
+                    <tr><td><a><img src="./images/notice.png"><[reward.type]></a><td><b><[reward.given]></b>
+                    <[endforeach]>
+            </tbody>
+        </table>
+        <[endif]>
+
+	</section>
+
+</main>
+

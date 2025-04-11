@@ -1,0 +1,22 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Classes">
+			<span class="title">World Maps</span>
+		</header>
+		<table style="border:0;">
+            <caption><font size=3><[section]></font></caption>
+			<tbody>
+				<[foreach maps map]>
+					<[if map.id]>
+						<tr style="background-color: transparent;">
+							<td style="border: 0;"><a href="map.php?map=<[map.id]>"><[map.name]> (<[map.id]>)</a></td>
+						</tr>  
+					<[endif]>          
+                <[endforeach]>
+			</tbody>
+		</table>
+	</section>
+</main>
+

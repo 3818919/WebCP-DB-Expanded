@@ -701,20 +701,41 @@ if (isset($_REQUEST['action']))
 				if ($loginrate_result[0] == LOGINRATE_CHECK_OK)
 				{
 					$password = substr($_POST['password'], 0, 12);
+					$username = strtolower($_POST['username']);
 
-					$password = hash('sha256',$salt.strtolower($_POST['username']).$password);
-					$checklogin = webcp_db_fetchall("SELECT username, password FROM accounts WHERE username = ? AND password = ?", strtolower($_POST['username']), $password);
-					if (empty($checklogin))
-					{
-						$loginrate_result = $loginrate->Mark($ip_prefix);
-						$tpl->message = "Login failed.";
-						break;
-					}
-					else
-					{
-						$sess->username = $checklogin[0]['username'];
-						$sess->password = $checklogin[0]['password'];
-						$tpl->message = "Logged in.";
+					if ($hash_method == 'bcrypt') {
+						// Bcrypt method
+						$checklogin = webcp_db_fetchall("SELECT username, password FROM accounts WHERE username = ?", $username);
+						
+						if (empty($checklogin)) {
+							$loginrate_result = $loginrate->Mark($ip_prefix);
+							$tpl->message = "<p style='color: red;'>Login failed.</p>";
+							break;
+						}
+
+						if (password_verify($salt . $username . $password, $checklogin[0]['password'])) {
+							$sess->username = $checklogin[0]['username'];
+							$sess->password = $checklogin[0]['password'];
+							$tpl->message = "<p style='color: green;'>You have logged in.</p>";
+						} else {
+							$loginrate_result = $loginrate->Mark($ip_prefix);
+							$tpl->message = "<p style='color: red;'>Login failed.</p>";
+							break;
+						}
+					} else {
+						// SHA256 method (original code)
+						$password = hash('sha256', $salt . $username . $password);
+						$checklogin = webcp_db_fetchall("SELECT username, password FROM accounts WHERE username = ? AND password = ?", $username, $password);
+						
+						if (empty($checklogin)) {
+							$loginrate_result = $loginrate->Mark($ip_prefix);
+							$tpl->message = "<p style='color: red;'>Login failed.</p>";
+							break;
+						} else {
+							$sess->username = $checklogin[0]['username'];
+							$sess->password = $checklogin[0]['password'];
+							$tpl->message = "<p style='color: green;'>You have logged in.</p>";
+						}
 					}
 				}
 				else if ($loginrate_result[0] == LOGINRATE_CHECK_THROTTLED)
@@ -1124,3 +1145,67 @@ function guildrank_str($ranks, $rank)
 	if ($rank == 0) $rank = 1;
 	return isset($ranks[$rank-1])?$ranks[$rank-1]:'Unknown';
 }
+
+if ($donationlink === "#" || !str_starts_with($donationlink, "https://")) {
+    $donationlink = null;
+} else {
+    $donationlink = $donationlink;
+}
+
+if ($discordinvite === "#" || !str_starts_with($discordinvite, "https://")) {
+    $discordinvite = null;
+} else {
+    $discordinvite = $discordinvite;
+}
+
+function handleZipDownload() {
+    global $client_download; 
+    
+    if (isset($_GET['file'])) {
+        $filename = basename(urldecode($_GET['file']));
+        $filepath = $client_download . '/' . $filename;
+
+        if (file_exists($filepath) && substr($filename, -4) === '.zip') {
+            $encodedFilename = str_replace('"', '\\"', $filename);
+            
+            header('Content-Type: application/zip');
+            header('Content-Disposition: attachment; filename="' . $encodedFilename . '"');
+            header('Content-Length: ' . filesize($filepath));
+            header('Pragma: no-cache');
+            header('Expires: 0');
+            
+            readfile($filepath);
+            exit;
+        } else {
+            die('File not found.');
+        }
+    }
+}
+
+function getDownloadLink() {
+    global $client_download; 
+    
+    if (!is_dir($client_download)) {
+        return '';
+    }
+
+    $files = glob($client_download . "/*.zip");
+    if (empty($files)) {
+        return '';
+    }
+
+    $fileArray = array();
+    foreach ($files as $file) {
+        $fileArray[$file] = filemtime($file);
+    }
+
+    arsort($fileArray);
+    $latestFile = array_key_first($fileArray);
+    $filename = basename($latestFile);
+
+    return 'index.php?file=' . rawurlencode($filename);
+}
+
+handleZipDownload();
+$tpl->discordinvite = $discordinvite;
+$tpl->download_link = getDownloadLink();

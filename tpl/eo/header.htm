@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+  <meta name="keywords" content="online rpg, free rpg, mmorpg, mmrpg, world, roleplay, endless online, <[sitename]>, anime, manga"/> 
+  <meta name="description" content="Welcome page for the free online mmorpg <[sitename]>."/> 
+
+  <link rel="shortcut icon" href="./tpl/eo/images/favicon.ico"/>
+  <link id="dynamic-stylesheet" rel="stylesheet" type="text/css" href="./tpl/eo/style_01.css">
+
+  <title><[sitename]> :: EOSERV Control Panel :: <[pagetitle]></title>
+
+</head>
+<body>
+
+<div id="container">
+	<nav class="main-nav">
+		<button class="hamburger" aria-label="Toggle navigation">
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+		</button>
+		<ul class="nav-list">
+			<li><a href="./index<[php]>">Home</a></li>
+			<li class="has-dropdown">
+				<a href="#">Stat Info</a>
+				<ul class="dropdown">
+					<li><a href="./classes<[php]>">Classes</a></li>
+					<li><a href="./spells<[php]>">Spells</a></li>
+					<li><a href="./items<[php]>">Items</a></li>
+					<li><a href="./npcs<[php]>">NPCs</a></li>
+					<li><a href="./shops<[php]>">Shops</a></li>
+					<li><a href="./trainers<[php]>">Trainers</a></li>
+					<li><a href="./inns<[php]>">Citizenship</a></li>
+					<li><a href="./quests<[php]>">Quests</a></li>
+					<li><a href="./maps<[php]>">Maps</a></li>
+				</ul>
+			</li>
+			<li class="has-dropdown">
+				<a href="#">Game Info</a>
+				<ul class="dropdown">
+					<li><a href="./players<[php]>">Top&nbsp;Players (Level)</a></li>
+					<li><a href="./wealth<[php]>">Top&nbsp;Players (Wealth)</a></li>
+					<li><a href="./guilds<[php]>">Top&nbsp;Guilds</a></li>
+					<li><a href="./staff<[php]>">Staff</a></li>
+					<li><a href="./online<[php]>">Online List</a></li>
+				</ul>
+			</li>
+			<[if download_link]>
+			<li><a href="<[download_link]>">Download</a></li>
+			<[endif]>
+			<[if !download_link]>
+			<li><a href="https://www.endless-online.com/deep/0_03/Endless03X-K.zip">Download</a></li>
+			<[endif]>
+			<[if discordinvite]>
+			<li><a href="<[discordinvite]>">Join Our Discord</a></li>
+			<[endif]>
+			<[if logged]>
+			<li class="has-dropdown">
+				<a href="#">Account</a>
+				<ul class="dropdown">
+					<li><a href="./characters<[php]>">My&nbsp;Characters&nbsp;(<[numchars]>)</a></li>
+					<li><a href="./logout<[php]>?csrf=<[%csrf]>">Logout</a></li>
+				</ul>
+			</li>
+			<[endif]>
+			<[if GUIDE]>
+			<li class="has-dropdown">
+				<a href="#">Moderator Tools</a>
+				<ul class="dropdown">
+					<li><a href="./reports<[php]>">Reports</a></li>
+				</ul>
+			</li>
+			<[endif]>
+			<[if GUARDIAN]>
+			<li class="has-dropdown">
+				<a href="#">GM Tools</a>
+				<ul class="dropdown">
+					<li><a href="./bans<[php]>">Ban Control</a></li>
+				</ul>
+			</li>
+			<[endif]>
+			<[if GM]>
+			<li class="has-dropdown">
+				<a href="#">HGM Tools</a>
+				<ul class="dropdown">
+					<li><a href="./allaccounts<[php]>">All Accounts</a></li>
+					<li><a href="./allcharacters<[php]>">All Characters</a></li>
+					<li><a href="./allguilds<[php]>">All Guilds</a></li>
+					<li><a href="./search<[php]>">Search</a></li>
+				</ul>
+			</li>
+			<[endif]>
+		</ul>
+	</nav>
+	<div id="page_header">
+		<[if online]>
+			<div class="online_players">
+				<span><[onlinecharacters]> </span><a href="./online<[php]>">Players Online!</a>
+			</div>
+		<[endif]>
+
+		<[if !online]>
+			<div class="online_players">
+				<span>Server Offline</span>
+			</div>
+		<[endif]>
+	</div>
+
+	<section class="page-content">
+		<!-- Sidebar Section -->
+		<aside class="sidebar">
+			<section class="sidebar-content">
+				<section class="style-box spacer">
+					<h4>Dark Mode</h4>
+					<label class="switch">
+						<input type="checkbox" id="mode-toggle">
+						<span class="slider round"></span>
+					</label>
+				</section>
+			</section>
+			
+			<[if !logged]>
+			<section class="login-box spacer">
+				<h3 class="spacer center">Player Login</h3>
+				<form action="<[if loggingout]>./<[endif]>" method="POST">
+					<input type="hidden" name="action" value="login">
+					<label for="username" class="visually-hidden">Username</label>
+					<input type="text" name="username" id="username" placeholder="Username">
+					<label for="password" class="visually-hidden">Password</label>
+					<input type="password" name="password" id="password" placeholder="Password">
+					<[if login_need_captcha]>
+					<label for="captcha">CAPTCHA</label>
+					<p>You have entered too many invalid passwords. Please enter the letters shown in the image.</p>
+					<img src="./captcha<[php]>">
+					<input type="text" name="captcha" id="captcha">
+					<[endif]>
+					<input type="submit" id="submit" value="Login">
+				</form>
+			</section>
+			<[endif]>
+
+			<section class="sidebar-content">
+				
+				<[if download_link]>
+					<a href="<[download_link]>">
+						<section class="link-box download-box spacer">
+							<h3>Play Game</h3>
+							<h4>Click here</h4>
+						</section>
+					</a>
+				<[endif]>
+
+				<[if !download_link]>
+					<a href="http://cache.tehsausage.com/EOzipped028.zip">
+						<section class="link-box download-box spacer">
+							<h3>Play Game</h3>
+							<h4>Click here</h4>
+						</section>
+					</a>
+				<[endif]>
+
+				<[if discordinvite]>
+					<a href="<[discordinvite]>">
+						<section class="link-box discord-box spacer">
+							<h3>Join Our Discord</h3>
+							<h4>Click here</h4>
+						</section>
+					</a>
+				<[endif]>
+
+				<[if donationlink]>
+				<a href="<[donationlink]>" target="_blank">
+					<section class="link-box donate-box spacer">
+						<h3>Support The Server By Donating></h3>
+						<h4>Click Here</h4>
+					</section>
+				</a>
+				<[endif]>
+			</section>
+		</aside>

@@ -1,0 +1,28 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Reports Log">
+			<span class="title">Report Chat Log</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Reporter</th>
+					<th>Reported</th>
+                    <th>Time</th>
+                    <th>Chat Log</th>
+				</tr>
+			</thead>
+			<tbody>
+                <tr>
+                    <td><a href="./character<[php]>?name=<[%report.reporter]>"><[report.reporter]></a></td>
+                    <td><a href="./character<[php]>?name=<[%report.reported]>"><[report.reported]></a></td>
+                    <td><[report.time_ago]></td>
+                    <td><[#report.chat_log_html]></td>
+                </tr>
+			</tbody>
+		</table>
+	</section>
+</main>
+

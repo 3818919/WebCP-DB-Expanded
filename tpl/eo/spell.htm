@@ -1,0 +1,97 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+        <header class="content-header">
+            <img src="./tpl/eo/images/icons/moon.webp" alt="spell Lookup">
+            <span class="title"><[spell.name]> (<[spell.id]>)</span>
+        </header> 
+        <div class="character-container">
+            <div class="character-column left-column">
+                <b>Name:</b> <span> <[spell.name]> (<[spell.id]>)</span><br>
+                <b>Spell Type:</b> <span><[spell.desc]></span><br>
+                <b>TP Cost:</b> <span><[spell.tp]><i>tp</i></span><br>
+                <b>Spell Cost:</b> <span><[spell.sp]><i>sp</i></span><br><br>
+            </div>
+
+            <div class="character-column right-column">
+                <[if spell.image]><img src="<[spell.image]>"><br><br><[endif]>
+
+                <[if spell.damage]>
+                <b>Damage:</b> <span><[spell.mindam]> - <[spell.maxdam]></span><br>
+                <b>Accuracy:</b> <span><[spell.accuracy]></span><br>
+                <b>Damages Element:</b> <span><[spell.element]></span><br>
+                <b>Element Power:</b> <span><[spell.element_power]></span><br>
+                <[endif]>
+
+                <[if spell.heal]>
+                <b>HP Recovery:</b> <span>+<[spell.hp]></span><br>
+                <[endif]>
+            </div>
+        </div>
+
+
+        <[if @masters]>
+        <div class="spacer"></div>
+        <header class="content-header">
+            <img src="./tpl/eo/images/icons/news_post.webp" alt="Skill Masters">
+            <span class="title">Skill Masters</span>
+        </header> 
+        <table class="spacer">
+            <thead>
+                <tr>
+                    <th>NPC</th>
+                    <th>Cost</th>
+                    <th>Requirements</th>
+            <tbody>
+                <[foreach masters skill]>
+                    <tr>
+                        <td><[if skill.image]><img src="<[skill.image]>"><br><[endif]><a href="npc.php?npc=<[skill.npcid]>"><[skill.npc]></a></td>
+                        <td><b><[skill.cost]></b></td>
+                        <td>
+                            <[if skill.levelreq]><b>Level:</b> <[skill.levelreq]><br><[endif]>
+                            <[if skill.clasreq]><b>Class:</b> <a href="class.php?class=<[skill.clasreq]>"><[skill.clasreqname]></a><br><[endif]>
+                            <[if skill.sk1]><b>Skill 1:</b> <a href="spell.php?spell=<[skill.sk1]>"><[skill.sk1name]></a><br><[endif]>
+                            <[if skill.sk2]><b>Skill 2:</b> <a href="spell.php?spell=<[skill.sk2]>"><[skill.sk2name]></a><br><[endif]>
+                            <[if skill.sk3]><b>Skill 3:</b> <a href="spell.php?spell=<[skill.sk3]>"><[skill.sk3name]></a><br><[endif]>
+                            <[if skill.sk4]><b>Skill 4:</b> <a href="spell.php?spell=<[skill.sk4]>"><[skill.sk4name]></a><br><[endif]>
+                            <[if skill.strreq]><b>STR:</b> <[skill.strreq]><br><[endif]>
+                            <[if skill.intreq]><b>INT:</b> <[skill.intreq]><br><[endif]>
+                            <[if skill.wisreq]><b>WIS:</b> <[skill.wisreq]><br><[endif]>
+                            <[if skill.agireq]><b>AGI:</b> <[skill.agireq]><br><[endif]>
+                            <[if skill.conreq]><b>CON:</b> <[skill.conreq]><br><[endif]>
+                            <[if skill.chareq]><b>CHA:</b> <[skill.chareq]><br><[endif]>
+                            <[foreach skill.spellreq spellreq]>
+                                <b>Spell:</b> <a href="spell.php?spell=<[spellreq.spellid]>"><[spellreq.spell]></a><br>
+                            <[endforeach]>
+                        </td>
+                    </tr>
+                <[endforeach]>
+            </tbody>
+        </table>
+        <[endif]> 
+        
+        <[if @items]>
+        <div class="spacer"></div>
+        <header class="content-header">
+            <img src="./tpl/eo/images/icons/news_post.webp" alt="Skill Items">
+            <span class="title">Skill Items</span>
+        </header> 
+        <table class="spacer" style="border:0;">
+            <tbody style="border:0;">
+            <[foreach shops shop]>
+            <tr style="border:0;">
+                <td style="border:0;"><a href="item.php?item=<[item.itemid]>"><[if item.graphic]><img src="<[item.graphic]>"><br><[endif]>#<[item.itemid]> <[item.name]></a></td>            
+            </tr>
+            <[endforeach]>
+            </tbody>
+        </table>
+        <[endif]> 
+
+        <[if !found]>
+        <article>
+            <h4>No Skillmasters Found</h4>
+        </article>     
+        <[endif]>            
+	</section>
+</main>
+

@@ -1,0 +1,25 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Edit Details">
+			<span class="title">Edit Details</span>
+		</header>
+        <article class="content-body">
+			This data is ONLY used for recovering your account if you forget your password.
+		</article>
+		<form action="" method="POST">
+            <label for="fullname">Full Name</label> <input type="text" name="fullname" id="fullname" value="<[~userdata.fullname]>"><br>
+            <label for="location">Location</label> <input type="text" name="location" id="location" value="<[~userdata.location]>"><br>
+            <label for="email">E-Mail</label> <input type="text" name="email" id="email" value="<[~userdata.email]>"><hr>
+    
+            <p>Leave blank to keep password unchanged.</p>
+            <label for="currentpassword">Current Password</label> <input type="password" name="currentpassword" id="currentpassword" value=""><br>
+            <label for="newpassword">New Password</label> <input type="password" name="newpassword" id="newpassword" value=""><br>
+            <label for="repeatpassword">Repeat Password</label> <input type="password" name="repeatpassword" id="repeatpassword" value=""><hr>
+    
+            <input type="submit" value="Update Details">
+    </form>
+	</section>
+</main>
+

@@ -1,0 +1,21 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Quests">
+			<span class="title">Quests</span>
+		</header>
+		<table style="border:0;">
+			<tbody>
+				<[foreach quests quest]>
+						<tr style="background-color: transparent;">
+							<td style="border: 0;"><a href="quest.php?quest=<[quest.id]>">#<[quest.id]> <[quest.name]></a></td>
+						</tr>            
+                <[endforeach]>
+			</tbody>
+		</table>
+
+	</section>
+
+</main>
+

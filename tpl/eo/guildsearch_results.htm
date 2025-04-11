@@ -1,0 +1,33 @@
+<!-- Main Content Section -->
+<main class="main-content">
+	<section class="content-box">
+		<header class="content-header">
+			<img src="./tpl/eo/images/icons/moon.webp" alt="Guilds">
+			<span class="title">Showing <[showing]> of <[count]> guilds</span>
+		</header>
+		<table>
+			<thead>
+				<tr>
+					<th>Tag</th>
+					<th>Name</th>
+					<th>Members</th>
+                    <th>Exp</th>
+				</tr>
+			</thead>
+			<tbody>
+				<[foreach guilds guild]>
+                <tr>
+                    <td><[guild.tag]>
+                    <td><a href="./guild<[php]>?tag=<[%guild.tag]>"><[guild.name]></a>
+                    <td><[guild.members]>
+                    <td><[guild.exp]>
+
+                 <[endforeach]>
+			</tbody>
+		</table>
+        <div style="flex-direction: row; justify-content: center; width: 90%">
+            <span style="text-align: center; padding-right: 5%;"><[#pagination]></span>
+        </div>
+	</section>
+</main>
+
