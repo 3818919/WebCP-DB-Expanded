@@ -1,5 +1,5 @@
-# WebCP-Full Database
- EOSERV-WebCP panel with Expanded Database Menu
+# WebCP-DB-Expanded
+ EOSERV-WebCP panel with Expanded Database Menu + New template and additional features to help support server owners.
 
  This project is an expanded branch of WebCP originally published by Sausage(Julian Smythe).
  
