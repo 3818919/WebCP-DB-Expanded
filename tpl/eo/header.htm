@@ -30,7 +30,7 @@
 					<li><a href="./npcs<[php]>">NPCs</a></li>
 					<li><a href="./shops<[php]>">Shops</a></li>
 					<li><a href="./trainers<[php]>">Trainers</a></li>
-					<li><a href="./inns<[php]>">Citizenship</a></li>
+					<li><a href="./inns<[php]>">Inns</a></li>
 					<li><a href="./quests<[php]>">Quests</a></li>
 					<li><a href="./maps<[php]>">Maps</a></li>
 				</ul>
@@ -38,22 +38,12 @@
 			<li class="has-dropdown">
 				<a href="#">Game Info</a>
 				<ul class="dropdown">
-					<li><a href="./players<[php]>">Top&nbsp;Players (Level)</a></li>
-					<li><a href="./wealth<[php]>">Top&nbsp;Players (Wealth)</a></li>
+					<li><a href="./players<[php]>">Top&nbsp;Players</a></li>
 					<li><a href="./guilds<[php]>">Top&nbsp;Guilds</a></li>
 					<li><a href="./staff<[php]>">Staff</a></li>
 					<li><a href="./online<[php]>">Online List</a></li>
 				</ul>
 			</li>
-			<[if download_link]>
-			<li><a href="<[download_link]>">Download</a></li>
-			<[endif]>
-			<[if !download_link]>
-			<li><a href="https://www.endless-online.com/deep/0_03/Endless03X-K.zip">Download</a></li>
-			<[endif]>
-			<[if discordinvite]>
-			<li><a href="<[discordinvite]>">Join Our Discord</a></li>
-			<[endif]>
 			<[if logged]>
 			<li class="has-dropdown">
 				<a href="#">Account</a>
@@ -105,6 +95,16 @@
 			</div>
 		<[endif]>
 	</div>
+	<[if message]>
+	<div class="notifications">	
+		<h4><center><[#message]></center></h4>
+	</div>
+	<[endif]>
+	<[if error]>
+	<div class="notifications">	
+		<h4 style="color:brown"><center><span>ERROR:</span> <[#error]></center></h4>
+	</div>
+	<[endif]>
 
 	<section class="page-content">
 		<!-- Sidebar Section -->
@@ -138,43 +138,4 @@
 				</form>
 			</section>
 			<[endif]>
-
-			<section class="sidebar-content">
-				
-				<[if download_link]>
-					<a href="<[download_link]>">
-						<section class="link-box download-box spacer">
-							<h3>Play Game</h3>
-							<h4>Click here</h4>
-						</section>
-					</a>
-				<[endif]>
-
-				<[if !download_link]>
-					<a href="http://cache.tehsausage.com/EOzipped028.zip">
-						<section class="link-box download-box spacer">
-							<h3>Play Game</h3>
-							<h4>Click here</h4>
-						</section>
-					</a>
-				<[endif]>
-
-				<[if discordinvite]>
-					<a href="<[discordinvite]>">
-						<section class="link-box discord-box spacer">
-							<h3>Join Our Discord</h3>
-							<h4>Click here</h4>
-						</section>
-					</a>
-				<[endif]>
-
-				<[if donationlink]>
-				<a href="<[donationlink]>" target="_blank">
-					<section class="link-box donate-box spacer">
-						<h3>Support The Server By Donating></h3>
-						<h4>Click Here</h4>
-					</section>
-				</a>
-				<[endif]>
-			</section>
 		</aside>

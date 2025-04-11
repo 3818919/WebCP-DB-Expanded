@@ -21,20 +21,22 @@
 
         <[if @inns]>
         <header class="content-header" style="margin-top:30px;">
-			<img src="./tpl/eo/images/icons/news_post.webp" alt="Innkeepers">
+			<img src="./tpl/eo/images/icons/post.webp" alt="Innkeepers">
 			<span class="title">Innkeepers</span>
 		</header>
         <table id="innkeepers" style="text-align:center">
             <tbody>                
                 <[foreach inns inn]>
-                    <[if !inn.row]><tr><[endif]><td><a href="npc<[php]>?npc=<[inn.npcid]>"><[if inn.image]><img src="<[inn.image]>"><br><[endif]>#<[inn.npcid]> <[inn.name]></a>	
+                    <tr style="border:0;background-color: transparent;">
+                        <td style="border:0;"><a href="npc<[php]>?npc=<[inn.npcid]>"><[if inn.image]><img src="<[inn.image]>"><br><[endif]>#<[inn.npcid]> <[inn.name]></a></td>
+                    </tr>
                 <[endforeach]>
         </table>
         <[endif]>
 
         <[if @quizzes]>
         <header class="content-header" style="margin-top:30px;">
-			<img src="./tpl/eo/images/icons/news_post.webp" alt="Quests">
+			<img src="./tpl/eo/images/icons/post.webp" alt="Quests">
 			<span class="title">Citizenship Quiz</span>
 		</header>
 		<table>

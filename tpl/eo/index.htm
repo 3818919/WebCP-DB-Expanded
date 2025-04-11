@@ -3,10 +3,16 @@
 	<section class="content-box">
 		<header class="content-header">
 			<img src="./tpl/eo/images/icons/moon.webp" alt="Server News">
-			<span class="title"><[welcome]></span>
+			<span class="title">Welcome to <[sitename]></span>
 		</header>
 		<article class="content-body">
-			<[news]>
+			Server Name: <b><[sitename]></b><br>
+			Accounts: <b><[accounts]></b><br>
+			Characters: <b><[characters]></b> (<b><[staffcharacters]></b> staff)<br>
+			Guilds: <b><[guilds]></b><br>
+			<[if bank]>
+				Our banks store a total of <b><[bank]></b> gold.<br>
+			<[endif]>
 		</article>
 		<article class="content-body">
 			<div class="slideshow-container">

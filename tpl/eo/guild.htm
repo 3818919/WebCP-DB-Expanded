@@ -20,20 +20,20 @@
         </article>
 
         <header class="content-header">
-			<img src="./tpl/eo/images/icons/news_post.webp" alt="Members">
+			<img src="./tpl/eo/images/icons/post.webp" alt="Members">
 			<span class="title">Guild Administration</span>
 		</header>
         <div class="character-container">
             <div class="character-column left-column">
                 <h4>Guild Leaders</h4>
                 <[foreach leaders leader id]>
-                <[if GM]><a href="./character<[php]>?name=<[%leader.name]>"><[endif]><[leader.name]><[if GM]></a><[endif]><[if leader.gm]> <img src="./tpl/green/images/admin.gif"><[endif]><[if !leader.guild_rank]> (founder)<br><[endif]>
+                <[if GM]><a href="./character<[php]>?name=<[%leader.name]>"><[endif]><[leader.name]><[if GM]></a><[endif]><[if leader.gm]> <img src="./tpl/green/images/admin.gif"><[endif]><[if !leader.guild_rank]> (founder)<[endif]>
                 <[endforeach]>
             </div>
             <div class="character-column right-column">
                 <h4>Guild Recruiters</h4>
                 <[foreach recruiters recruiter id]>
-                <[if recruiter.gm]> <img src="./tpl/eo/images/icons/admin_user.webp" title="Admin" style="max-width: 16px;"><[endif]> <[if GM]><a href="./character<[php]>?name=<[%recruiter.name]>"><[endif]><[recruiter.name]><br><[if GM]></a><[endif]>
+                <[if recruiter.gm]> <img src="./tpl/eo/images/icons/admin.webp" title="Admin" style="max-width: 16px;"><[endif]> <[if GM]><a href="./character<[php]>?name=<[%recruiter.name]>"><[endif]><[recruiter.name]><[if GM]></a><[endif]>
                 <[endforeach]>
             </div>
         </div>

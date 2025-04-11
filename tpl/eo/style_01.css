@@ -6,23 +6,33 @@
 	/* ----- SITE COLORS ------ */
     --primary-color: #ede1d5;
     --secondary-color: #f6f1ee;
+
+    --text-color: #000;
+    --title-text: #000;
     --link-color: #8e5d2c;
-    --hover-color: #663300;
-    --text-color: #000000;
+    --link-hover-color: #663300;
+    
     --light-text: #FFFFFF;
-    --background-color: #ede1d5;
-	--shadow-color: #8b8b8b99;
-    --shadow-color-2: #0000001b;
-	--transparent-white: #ffffffd7;
+
+	--transparent-light: #ffffffd7;
 	--dropdown-background: #CCBBAA;
 	--dropdown-background-hover: #DDCCBB;
 
+    /* ----- DARKMODE TOGGLE ------ */
+    --darkmode-toggle-off: #ccc;
+    --darkmode-toggle-on: #2196F3;
+    --darkmode-toggle-bg: #fff;
+
     /* ----- LOGIN BOX ------ */
     --input-border-color: #ccbbaa;
-    --input-border-radius: 4px;
     --input-focus-color: #663300;
     --button-bg-color: #ccbbaa;
     --button-hover-color: #663300;
+    --input-border-radius: 4px;
+
+     /* ----- SHADOWS ------ */
+    --shadow-color: #8b8b8b99;
+    --shadow-color-2: #0000001b;
 
 	/* ----- FONTS ------ */
 	--font: Arial, sans-serif;
@@ -31,7 +41,7 @@
 * { margin: 0; padding: 0; }
 
 body {
-	background-color: #FFFFFF;
+	background-color: var(--secondary-color);
 	background-image:url("./images/back_day.webp");
 	font-family: var(--font);
 	font-size: 18px;
@@ -44,12 +54,12 @@ a {
 }
 
 a:hover {
-	color : var(--hover-color);
+	color : var(--link-hover-color);
 }
 
 .title{
 	position: relative;
-	color : var(--text-color);
+	color : var(--title-color);
 	font-family: var(--font);
 	font-size: 14px;
 	font-weight: bold;
@@ -58,12 +68,19 @@ a:hover {
 	padding-left: 10px;
 }
 
+h3 {
+    color: var(--title-color);
+}
+
+article {
+    color: var(--text-color);
+}
 
 
 /* CONTAINER
 ------------------------------------------------------ */
 #container {
-	background-color: var(--background-color);
+	background-color: var(--primary-color);
 	width: 80%;
 	max-width: 1200px;
 	margin: 20px auto;
@@ -108,7 +125,7 @@ a:hover {
 }
 
 .nav-list a:hover {
-    color: var(--hover-color);
+    color: var(--link-hover-color);
 }
 
 /* Dropdown Styles */
@@ -216,6 +233,7 @@ a:hover {
 	overflow: hidden;
 	background-image:url("./images/banner.webp");
 	background-size: cover;
+    background-position: top center;
 	width: 100%;
 	vertical-align: bottom; 
 	left: 0;
@@ -225,7 +243,7 @@ a:hover {
 	}
 
 .online_players {
-	color : var(--transparent-white);
+	color : var(--transparent-light);
 	font-family: var(--font);
 	font-style: italic;
 	font-weight: bold;
@@ -237,7 +255,7 @@ a:hover {
 }
 
 .online_players a{
-	color : var(--transparent-white);
+	color : var(--transparent-light);
 	text-decoration : underline;
 	font-size: 15px;
 	
@@ -531,7 +549,7 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background-color: #ccc;
+background-color: var(--darkmode-toggle-off);
 -webkit-transition: .4s;
 transition: .4s;
 }
@@ -543,17 +561,17 @@ height: 26px;
 width: 26px;
 left: 4px;
 bottom: 4px;
-background-color: white;
+background-color: var(--darkmode-toggle-bg);
 -webkit-transition: .4s;
 transition: .4s;
 }
 
 input:checked + .slider {
-background-color: #2196F3;
+background-color: var(--darkmode-toggle-on);
 }
 
 input:focus + .slider {
-box-shadow: 0 0 1px #2196F3;
+box-shadow: 0 0 1px var(--darkmode-toggle-on);
 }
 
 input:checked + .slider:before {
@@ -585,7 +603,7 @@ table {
 }
 
 thead {
-    border: 1px solid var(--hover-color);
+    border: 1px solid var(--link-hover-color);
 }
 
 th {
@@ -594,13 +612,13 @@ th {
     text-align: center;
     font-weight: 600;
     color: var(--text-color);
-    border-bottom: 1px solid var(--hover-color);
+    border-bottom: 1px solid var(--link-hover-color);
     white-space: nowrap;
 }
 
 td {
     padding: 1rem;
-    border: 1px solid var(--hover-color);
+    border: 1px solid var(--link-hover-color);
     font-family: var(--font);
     text-align: center;
     font-weight: 600;

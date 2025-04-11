@@ -42,9 +42,9 @@ $reports = webcp_db_fetchall("SELECT reporter, reported, reason, time FROM repor
 
 foreach ($reports as &$report)
 {
-	$report['reporter'] = ucfirst($report['reporter']);
-	$report['reported'] = ucfirst($report['reported']);
-	$report['time_ago'] = timeago_full($report['time'], time());
+	$report['reporter'] = 'Vexx';//ucfirst($report['reporter']);
+	$report['reported'] = 'Trippie'; //ucfirst($report['reported']);
+	$report['time_ago'] = '[TIMESTAMP]';//timeago_full($report['time'], time());
 }
 
 $pagination = generate_pagination($pages, $page);

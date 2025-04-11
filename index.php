@@ -24,23 +24,6 @@ $bank = $bank[0]['gold'];
 $play = webcp_db_fetchall("SELECT SUM(`usage`) as count FROM characters");
 $play = ($play[0]['count']/60);
 
-if (file_exists($newsfile)) {
-    $lines = file($newsfile);
-    $welcome = ''; 
-    $news = ''; 
- 
-    if (!empty($lines)) {
-        $welcome = trim($lines[0]);
-
-        for ($i = 1; $i < count($lines); $i++) {
-            $news .= "<p>" . $lines[$i] . "</p><br>";
-        }
-    }
-} else {
-    $welcome = "Welcome!";
-    $news = "<p>Error: The file could not be found, be sure to check the location of your server data files.</p>";
-}
-
 $tpl->accounts = number_format($accounts);
 $tpl->characters = number_format($characters);
 $tpl->staffcharacters = number_format($staffcharacters);

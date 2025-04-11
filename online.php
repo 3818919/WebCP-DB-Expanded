@@ -28,9 +28,7 @@ if ($online)
 						$char = $char[0];
 					else
 						$char = null;
-				if (strtolower($character['name']) == "vexx") {
-					$character['vip'] = True;
-				}
+				$character['ip'] = $char['ip'];
 
 		}
 	}
